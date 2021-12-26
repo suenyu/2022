@@ -4,7 +4,7 @@
 
 所以，关于校长免职，关于北大附中，乱说不说都不正常；全信不信终非审辨。不背党纪国法，系念天理人情背景下，每个人都最大限度零度叙述，或者能不断接近事实；从而，给出判断。
 
-### Markdown
+### 关于免职
 
 Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
 
