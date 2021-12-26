@@ -1,8 +1,8 @@
-## Welcome to GitHub Pages
+## 关于免职，关于王铮，关于北大附中。
 
-You can use the [editor on GitHub](https://github.com/suenyu/2021/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+碎片时代，真相如果存在，也只能是一个个人的一个个视角所看到、所陈述、并最终被记下的东西。
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+所以，关于校长免职，关于北大附中，乱说不说都不正常；全信不信终非审辨。不背党纪国法，系念天理人情背景下，每个人都最大限度零度叙述，或者能不断接近事实；从而，给出判断。
 
 ### Markdown
 
