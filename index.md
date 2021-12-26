@@ -6,7 +6,7 @@
 
 ### 关于免职
 
-2021年12月14日上午9：00
+2021年12月14日上午9：0
 is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
 
 ```markdown
