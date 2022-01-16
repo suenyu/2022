@@ -1,38 +1,52 @@
-## 关于免职，关于王铮，关于北大附中。
+2022年1月14日，运行命令：
+```powershell
+$GroupName = "Group Creators"
+$AllowGroupCreation = $False
 
-碎片时代，真相如果存在，也只能是一个个人的一个个视角所看到、所陈述、并最终被记下的东西。
+Connect-AzureAD
 
-所以，关于校长免职，关于北大附中，乱说不说都不正常；全信不信终非审辨。不背党纪国法，系念天理人情背景下，每个人都最大限度零度叙述，或者能不断接近事实；从而，给出判断。
+$settingsObjectID = (Get-AzureADDirectorySetting | Where-object -Property Displayname -Value "Group.Unified" -EQ).id
+if(!$settingsObjectID)
+{
+    $template = Get-AzureADDirectorySettingTemplate | Where-object {$_.displayname -eq "group.unified"}
+    $settingsCopy = $template.CreateDirectorySetting()
+    New-AzureADDirectorySetting -DirectorySetting $settingsCopy
+    $settingsObjectID = (Get-AzureADDirectorySetting | Where-object -Property Displayname -Value "Group.Unified" -EQ).id
+}
 
-### 关于免职
+$settingsCopy = Get-AzureADDirectorySetting -Id $settingsObjectID
+$settingsCopy["EnableGroupCreation"] = $AllowGroupCreation
 
-2021年12月14日上午9：
-is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+if($GroupName)
+{
+  $settingsCopy["GroupCreationAllowedGroupId"] = (Get-AzureADGroup -SearchString $GroupName).objectid
+} else {
+$settingsCopy["GroupCreationAllowedGroupId"] = $GroupName
+}
+Set-AzureADDirectorySetting -Id $settingsObjectID -DirectorySetting $settingsCopy
 
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
+(Get-AzureADDirectorySetting -Id $settingsObjectID).Values
 ```
+Group Creators内，保留管理员一人。
+同时，yammer开启Native Mode。
+​
 
-For more details see [Basic writing and formatting syntax](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
+这意味着一些事情，最核心的是：**yammer内不再允许新建群组**。
+一个时代，落幕。
+​
 
-### Jekyll Themes
+直接原因是，IT部门和校园管理中心突然微信：
+“学校领导需要yammer这个期间的安全管理情况说明，有什么风险，如何管理，是否可以临时关闭”
+“孙老师好，在1月17日到2月20期间，在您管理的yammer、语雀、银杏时报的调查问卷，您提供一下安全管理措施，有什么风险没有，如有风险有什么应急预案？您发给我”
+​
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/suenyu/2021/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+根本原因是，都是各路神仙，要说明，要预案，要不出问题，要禁访问国外网站权利……所以，有了上述命令的运行。
+说到底，不做事，自然能没问题。做自然就有隐患风险。
+貌似哲学，无非实际。
+​
 
-### Support or Contact
+帝都，要求其实年年事事都有，以往是王铮抗着，事情我做，风险隐患都在。
+现在上下一心避免隐患，都可以理解，都是人之常情。
+​
 
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+常情不是理想，但世间多的是常人，你我都是。
